@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "f9fb60db-25b7-4316-8daa-d2dbb4a88fe2",
+		"_postman_id": "6003d54a-2088-4d73-9a82-96e7ba40ef08",
 		"name": "Unitask",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "11272354"
+		"_exporter_id": "30310015"
 	},
 	"item": [
 		{
@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstName\" : \"Test5\",\r\n    \"lastName\" : \"Patel\",\r\n    \"email\" : \"test5@gmail.com\",\r\n    \"password\" : \"123456\"\r\n}",
+					"raw": "{\r\n    \"firstName\" : \"Test5\",\r\n    \"lastName\" : \"Patel\",\r\n    \"email\" : \"test6@gmail.com\",\r\n    \"password\" : \"123456\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -42,7 +42,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"email\": \"test1@gmail.com\",\r\n\"password\": \"123456\"}",
+					"raw": "{\"email\": \"test5@gmail.com\",\r\n\"password\": \"123456\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -50,14 +50,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/user/login",
+					"raw": "localhost:3000/api/users/login",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"api",
-						"user",
+						"users",
 						"login"
 					]
 				}
@@ -67,6 +67,16 @@
 		{
 			"name": "view profile",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEsImVtYWlsIjoidGVzdDVAZ21haWwuY29tIiwiaWF0IjoxNjk3NDYwMDQ5LCJleHAiOjE2OTc0NjM2NDl9.g92pEn9Lna0-Ip-d3Ae37zFNo1cKDq33s7ibVVd9Ces",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -92,7 +102,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjcsImVtYWlsIjoiMTIiLCJpYXQiOjE2OTc0MDAyOTIsImV4cCI6MTY5NzQwMzg5Mn0.x0CQMNB0X-Mw0UOxRmBVxAOGimptZev5aDsXwgpHXso",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEsImVtYWlsIjoidGVzdDVAZ21haWwuY29tIiwiaWF0IjoxNjk3NDYwMDQ5LCJleHAiOjE2OTc0NjM2NDl9.g92pEn9Lna0-Ip-d3Ae37zFNo1cKDq33s7ibVVd9Ces",
 							"type": "string"
 						}
 					]
@@ -123,8 +133,39 @@
 		{
 			"name": "logout",
 			"request": {
-				"method": "GET",
-				"header": []
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEsImVtYWlsIjoidGVzdDVAZ21haWwuY29tIiwiaWF0IjoxNjk3NDYwMDQ5LCJleHAiOjE2OTc0NjM2NDl9.g92pEn9Lna0-Ip-d3Ae37zFNo1cKDq33s7ibVVd9Ces",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/users/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"logout"
+					]
+				}
 			},
 			"response": []
 		}
