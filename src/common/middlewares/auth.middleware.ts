@@ -11,6 +11,9 @@ export class AuthMiddleware implements NestMiddleware {
         const token = req.headers.authorization?.split(' ')[1];
     if (!token) {
         throw new UnauthorizedException('You are not allow to do this action');
+    }    
+    if(!req.session.user){
+        throw new UnauthorizedException('User session is expired!, Please login.');
     }
     try {    
       const decoded = this.jwtService.verify(token,{secret:process.env.JWT_SECRET})  

@@ -40,7 +40,7 @@ export class UserService {
   }
 
   // User login and token generation..................................
-  async login(loginUserDto: LoginUserDto) {
+  async login(req:any,loginUserDto: LoginUserDto) {    
       const { email, password } = loginUserDto;
       const user = await this.userRepository.findOne({
         where: { email: email },
@@ -58,7 +58,7 @@ export class UserService {
 
       const payload = { userid: user.id, email: user.email };
       const accessToken = await this.jwtService.signAsync(payload,{secret:process.env.JWT_SECRET});
-
+      req.session.user = payload;
       return { access_token: accessToken };
   }
 
@@ -71,4 +71,12 @@ export class UserService {
     };
   }
 
+  //get user by email...................................................
+  async getUserByEMail(email: string){
+    const user = await this.userRepository.findOne({
+      where: { email: email }
+    })
+
+    return user;
+  }
 }

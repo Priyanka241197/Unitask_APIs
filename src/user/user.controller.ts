@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req, HttpCode } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user-dto';
@@ -14,8 +14,9 @@ export class UserController {
   }
 
   @Post('login')
-  async login(@Body() loginUserDto: LoginUserDto) {
-    return this.userService.login(loginUserDto);
+  @HttpCode(200)
+  async login(@Req() req: any, @Body() loginUserDto: LoginUserDto) {
+    return this.userService.login(req,loginUserDto);
   }
 
   @Get('me')
@@ -24,9 +25,9 @@ export class UserController {
     return this.userService.findOne(id);
   }
 
-  @Post('logout')
+  @Get('logout')
   async logout(@Req() req : any) {
-    const token = req.headers.authorization.split(' ')[1];
-    return { message: 'Logged out successfully' };
+    req.session.destroy();
+    return { message: 'User logout successfully' };
   }
 }
