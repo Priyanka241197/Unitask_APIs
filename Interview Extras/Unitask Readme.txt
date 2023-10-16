@@ -30,7 +30,7 @@ Project setup :
 			- Choose option "Import from self-contained File" 
 			- select new schema 
 			- click "Start Import"
-			
+Note : you might need to chnage the database configuration in ".env" file.		
 			
 3) Project running commands :
 you can use any of the following command to run the project
